@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>故事分页展示</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+           padding-top: 200px;
+            background-image: url('photo/002.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .story-container {
+            max-width: 600px;
+            margin: 0 auto;
+            /* background-color: rgba(255, 255, 255, 0.8); */
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .pagination {
+            padding-top: 100px;
+            text-align: center;
+        }
+        .pagination button {
+            padding: 10px 25px;
+            background: #b49218;
+            border: none;
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .pagination button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="story-container">
+        <!-- 第一页 -->
+        <div class="page active">
+            <h2>第一页：神秘的森林入口</h2>
+            <p>在一个阳光明媚的早晨，小明和他的小伙伴们决定去探索那片传说中的神秘森林。他们背着背包，怀揣着兴奋的心情，来到了森林的入口。入口处弥漫着一层淡淡的雾气，让人不禁心生好奇。</p>
+        </div>
+        <!-- 第二页 -->
+        <div class="page">
+            <h2>第二页：森林中的奇异生物</h2>
+            <p>走进森林后，他们发现了许多从未见过的奇异生物。有色彩斑斓的小鸟，在枝头欢快地歌唱；还有毛茸茸的小松鼠，在树枝间蹦来跳去。小明兴奋地拿出相机，记录下这些美好的瞬间。</p>
+        </div>
+        <!-- 第三页 -->
+        <div class="page">
+            <h2>第三页：迷失的小径</h2>
+            <p>然而，随着深入森林，他们不小心迷失了方向。原本清晰的小径变得错综复杂，他们不知道该往哪个方向走。小伙伴们开始有些慌张，小明却努力保持冷静，试图寻找线索。</p>
+        </div>
+        <!-- 第四页 -->
+        <div class="page">
+            <h2>第四页：意外的帮助</h2>
+            <p>就在他们感到绝望的时候，一只聪明的狐狸出现了。它似乎看出了他们的困境，开始在前面带路。小明和小伙伴们半信半疑地跟着狐狸，心中充满了期待。</p>
+        </div>
+        <!-- 第五页 -->
+        <div class="page">
+            <h2>第五页：走出森林</h2>
+            <p>经过一段时间的跟随，狐狸终于把他们带出了森林。小明和小伙伴们感激地看着狐狸，虽然它很快就消失在了树林中，但这次奇妙的冒险却永远留在了他们的记忆里。</p>
+        </div>
+    </div>
+    <div class="pagination">
+        <button id="prev-page" onclick="prevPage()">上一页</button>
+        <button id="next-page" onclick="nextPage()">下一页</button>
+    </div>
+
+    <script>
+        const pages = document.querySelectorAll('.page');
+        let currentPage = 0;
+
+        function showPage(index) {
+            pages.forEach((page, i) => {
+                if (i === index) {
+                    page.classList.add('active');
+                } else {
+                    page.classList.remove('active');
+                }
+            });
+        }
+
+        function prevPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        }
+
+        function nextPage() {
+            if (currentPage < pages.length - 1) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        }
+
+        // 初始化显示第一页
+        showPage(currentPage);
+    </script>
+</body>
+
+</html>
